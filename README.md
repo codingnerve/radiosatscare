@@ -147,7 +147,7 @@ the form tells the visitor it could not send, and the log says why.
 process's memory, which is right for a site like this.
 
 **Real visitor IPs.** The app reads the visitor's IP from `X-Forwarded-For` as set by Nginx (`TRUST_PROXY=1`, the
-production default). Do not expose port 3000 to the internet: the PM2 file binds it to `127.0.0.1` so only Nginx
+production default). Do not expose port 3400 to the internet: the PM2 file binds it to `127.0.0.1` so only Nginx
 can reach it. Without a proxy all visitors share one rate-limit bucket.
 
 ### Email (Brevo)
@@ -193,7 +193,7 @@ you choose a different period. Because nothing is stored on the website, there i
 | Everyone gets 429 after a few enquiries | The app is not behind a proxy that sets `X-Forwarded-For`, so all visitors look like one IP. Put Nginx in front and keep `TRUST_PROXY=1` |
 | `nginx -t` fails on missing certificates | Complete the certificate step first (HTTP block only), then enable the 443 blocks |
 | Phone number or hours didn't change | `NEXT_PUBLIC_*` are build-time. Run `npm run build` and `pm2 reload radiosatscare` |
-| Port already in use | Another process holds 3000. Stop it, or change the port in the PM2 file and Nginx upstream |
+| Port already in use | Another process holds 3400. Stop it, or change the port in the PM2 file and Nginx upstream |
 
 ## Decisions to confirm before launch
 
