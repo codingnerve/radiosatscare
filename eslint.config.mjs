@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Plain CommonJS process config for PM2.
+    "deploy/**",
   ]),
 ]);
 
