@@ -2,33 +2,33 @@
 @import "@fontsource-variable/inter";
 @import "@fontsource-variable/manrope";
 
-/* Design tokens: deep navy, white, restrained orange. */
+/* Design tokens: lighter, luminous modern palette with crisp slate, sky accents & warm signal orange. */
 @theme {
   --font-sans: "Inter Variable", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-display: "Manrope Variable", "Inter Variable", ui-sans-serif, system-ui, sans-serif;
 
-  --color-navy-950: #060f24;
-  --color-navy-900: #0a1b3d;
-  --color-navy-800: #112a54;
-  --color-navy-700: #1b3c72;
-  --color-navy-600: #2a5090;
-  --color-navy-200: #c7d4ea;
-  --color-navy-100: #e3eaf6;
-  --color-navy-50: #f1f5fb;
+  --color-navy-950: #0b1329;
+  --color-navy-900: #1e293b;
+  --color-navy-800: #334155;
+  --color-navy-700: #1d4ed8;
+  --color-navy-600: #2563eb;
+  --color-navy-200: #cbd5e1;
+  --color-navy-100: #f1f5f9;
+  --color-navy-50: #f8fafc;
 
   --color-orange-500: #f97316;
-  --color-orange-600: #ea6a0c;
+  --color-orange-600: #ea580c;
   --color-orange-700: #c2410c; /* text-safe on white (5.2:1) */
-  --color-orange-100: #ffedd9;
-  --color-orange-50: #fff7ee;
+  --color-orange-100: #ffedd5;
+  --color-orange-50: #fff7ed;
 
-  --color-ink: #16233f;
-  --color-muted: #4a5a78; /* 7:1 on white */
-  --color-line: #d8e0ee;
+  --color-ink: #0f172a;
+  --color-muted: #475569; /* >7:1 on white */
+  --color-line: #e2e8f0;
 
   --radius-card: 1rem;
-  --shadow-card: 0 1px 2px rgb(10 27 61 / 0.06), 0 8px 24px -12px rgb(10 27 61 / 0.18);
-  --shadow-lift: 0 2px 4px rgb(10 27 61 / 0.08), 0 18px 36px -16px rgb(10 27 61 / 0.3);
+  --shadow-card: 0 1px 3px 0 rgb(15 23 42 / 0.05), 0 10px 25px -5px rgb(15 23 42 / 0.05);
+  --shadow-lift: 0 4px 6px -1px rgb(15 23 42 / 0.07), 0 20px 30px -10px rgb(15 23 42 / 0.12);
 
   --animate-rise: rise 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) both;
   --animate-pulse-ring: pulse-ring 2.4s ease-out infinite;
@@ -148,19 +148,22 @@
   }
   .btn-primary {
     background: var(--color-orange-500);
-    color: var(--color-navy-950);
+    color: #ffffff;
+    box-shadow: 0 1px 2px rgb(249 115 22 / 0.25);
   }
   .btn-primary:hover:not(:disabled) {
     background: var(--color-orange-600);
   }
   .btn-secondary {
-    background: transparent;
+    background: #ffffff;
     color: var(--color-navy-900);
-    border-color: var(--color-navy-900);
+    border-color: var(--color-line);
+    box-shadow: 0 1px 2px rgb(0 0 0 / 0.04);
   }
   .btn-secondary:hover {
-    background: var(--color-navy-900);
-    color: #fff;
+    background: var(--color-navy-50);
+    color: var(--color-navy-950);
+    border-color: #cbd5e1;
   }
   .on-navy .btn-secondary {
     color: #fff;

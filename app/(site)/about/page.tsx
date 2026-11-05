@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { Checklist, ContactCta, PageHero } from "@/components/blocks";
 import { operatorLine } from "@/components/LegalPage";
@@ -61,8 +62,22 @@ export default function AboutPage() {
               </p>
             </div>
           </div>
-          <div className="card self-start p-6 sm:p-8">
-            <h2 className="text-xl">At a glance</h2>
+          <div className="space-y-6 self-start">
+            <div className="relative h-60 w-full overflow-hidden rounded-2xl border border-line shadow-sm">
+              <Image
+                src="/images/support-advisor.jpg"
+                alt="RadioSatCare technical advisor assisting driver"
+                fill
+                className="object-cover"
+                sizes="(min-width: 1024px) 35vw, 100vw"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent" />
+              <div className="absolute bottom-3 left-4 right-4 text-xs font-medium text-white">
+                Independent assistance focused on clarity, honest limits, and driver satisfaction.
+              </div>
+            </div>
+            <div className="card p-6 sm:p-8">
+              <h2 className="text-xl">At a glance</h2>
             <dl className="mt-5 space-y-4 text-[0.9375rem]">
               <div>
                 <dt className="font-semibold text-navy-900">What we do</dt>
@@ -86,6 +101,7 @@ export default function AboutPage() {
                 </dd>
               </div>
             </dl>
+          </div>
           </div>
         </div>
       </section>

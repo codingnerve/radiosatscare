@@ -1,8 +1,16 @@
+import Image from "next/image";
 import Link from "next/link";
 import { Checklist, ContactCta, FaqAccordion, PageHero } from "./blocks";
 import { EnquiryForm } from "./EnquiryForm";
 import { Icon } from "./Icon";
 import { services, type ServiceContent } from "@/lib/content";
+
+const serviceImages: Record<string, string> = {
+  "radio-activation": "/images/service-activation.jpg",
+  "signal-support": "/images/service-signal.jpg",
+  "channel-assistance": "/images/service-channels.jpg",
+  "subscription-support": "/images/service-subscription.jpg",
+};
 
 export function ServicePage({ service }: { service: ServiceContent }) {
   const others = services.filter((s) => s.slug !== service.slug);
@@ -19,6 +27,25 @@ export function ServicePage({ service }: { service: ServiceContent }) {
       <section className="py-14 sm:py-16" aria-labelledby="help-heading">
         <div className="container-page grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16">
           <div className="space-y-12">
+            {serviceImages[service.slug] && (
+              <div className="relative h-64 sm:h-72 w-full overflow-hidden rounded-2xl border border-line shadow-sm">
+                <Image
+                  src={serviceImages[service.slug]}
+                  alt={service.title}
+                  fill
+                  className="object-cover"
+                  priority
+                  sizes="(min-width: 1024px) 55vw, 100vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent" />
+                <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-white">
+                  <span className="text-sm font-semibold backdrop-blur-md bg-slate-900/60 px-3 py-1 rounded-full border border-white/20">
+                    {service.title} Technical Assistance
+                  </span>
+                </div>
+              </div>
+            )}
+
             <div>
               <h2 id="help-heading" className="text-2xl sm:text-3xl">
                 What we can help with

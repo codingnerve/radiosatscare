@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { Checklist, ContactCta, FaqAccordion, SectionHeading, ServiceCards } from "@/components/blocks";
 import { EnquiryForm } from "@/components/EnquiryForm";
-import { HeroIllustration } from "@/components/HeroIllustration";
 import { Icon } from "@/components/Icon";
 import { commonIssues, generalFaqs, steps, vehicleInfo, whyChoose } from "@/lib/content";
 import { pageMetadata } from "@/lib/seo";
@@ -22,32 +22,35 @@ export default function HomePage() {
   return (
     <>
       {/* 3. Hero */}
-      <section className="on-navy relative overflow-hidden bg-navy-900">
+      <section className="relative overflow-hidden border-b border-line bg-gradient-to-b from-sky-50/80 via-blue-50/30 to-white">
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute -left-40 top-20 h-[34rem] w-[34rem] rounded-full border border-white/[0.07]"
+          className="pointer-events-none absolute -left-32 top-10 h-96 w-96 rounded-full bg-blue-100/50 blur-3xl"
         />
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute -left-16 top-44 h-80 w-80 rounded-full border border-orange-500/25"
+          className="pointer-events-none absolute right-0 top-20 h-96 w-96 rounded-full bg-orange-100/40 blur-3xl"
         />
-        <div className="container-page relative grid items-center gap-10 py-14 sm:py-20 lg:grid-cols-[1.05fr_0.95fr] lg:gap-14">
+        <div className="container-page relative grid items-center gap-10 py-14 sm:py-20 lg:grid-cols-[1.1fr_0.9fr] lg:gap-14">
           <div className="animate-rise">
-            <p className="eyebrow">Independent satellite radio assistance</p>
-            <h1 className="mt-3 text-4xl !text-white sm:text-5xl lg:text-[3.4rem]">
+            <div className="inline-flex items-center gap-2 rounded-full border border-orange-200 bg-orange-50 px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-orange-700 shadow-xs">
+              <span className="h-2 w-2 rounded-full bg-orange-500 animate-pulse" />
+              Independent satellite radio assistance
+            </div>
+            <h1 className="mt-4 text-4xl font-extrabold text-navy-950 sm:text-5xl lg:text-[3.25rem] tracking-tight">
               Get your car&apos;s satellite radio sorted, with straight answers.
             </h1>
-            <p className="mt-6 max-w-xl text-lg text-navy-100">
+            <p className="mt-5 max-w-xl text-lg text-muted">
               Activation, signal drops, missing channels or a confusing renewal: tell us what the radio is doing and
               we&apos;ll guide you to the right next step.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
-              <a href="#enquiry" className="btn btn-primary">
+              <a href="#enquiry" className="btn btn-primary shadow-sm hover:shadow-md">
                 Send an enquiry
               </a>
               {telHref ? (
                 <a href={telHref} className="btn btn-secondary">
-                  <Icon name="phone" className="h-5 w-5" /> Call {site.phoneDisplay}
+                  <Icon name="phone" className="h-5 w-5 text-orange-600" /> Call {site.phoneDisplay}
                 </a>
               ) : (
                 <a href="#how-it-works" className="btn btn-secondary">
@@ -55,23 +58,43 @@ export default function HomePage() {
                 </a>
               )}
             </div>
-            <ul className="mt-9 grid gap-3 text-[0.9375rem] text-navy-100 sm:grid-cols-1">
+            <ul className="mt-8 grid gap-3 text-[0.9375rem] text-muted sm:grid-cols-1">
               {[
                 "Independent: we are not your radio provider",
                 "Reply by phone or email, your choice",
                 "We never ask for card numbers or passwords",
               ].map((t) => (
-                <li key={t} className="flex items-center gap-3">
-                  <span className="flex h-6 w-6 flex-none items-center justify-center rounded-full bg-orange-500 text-navy-950">
-                    <Icon name="check" className="h-4 w-4" />
+                <li key={t} className="flex items-center gap-2.5">
+                  <span className="flex h-5 w-5 flex-none items-center justify-center rounded-full bg-emerald-100 text-emerald-700">
+                    <Icon name="check" className="h-3.5 w-3.5" />
                   </span>
-                  {t}
+                  <span className="font-medium text-slate-700">{t}</span>
                 </li>
               ))}
             </ul>
           </div>
           <div className="animate-rise [animation-delay:120ms]">
-            <HeroIllustration className="mx-auto w-full max-w-lg drop-shadow-2xl" />
+            <div className="relative mx-auto w-full max-w-lg overflow-hidden rounded-2xl border border-line bg-white p-2.5 shadow-lift">
+              <div className="relative h-72 sm:h-80 w-full overflow-hidden rounded-xl bg-slate-900">
+                <Image
+                  src="/images/hero-car-interior.jpg"
+                  alt="Modern car interior showing digital dashboard and satellite radio system"
+                  fill
+                  className="object-cover"
+                  priority
+                  sizes="(min-width: 1024px) 45vw, 100vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent" />
+                <div className="absolute top-3 left-3 flex items-center gap-2 rounded-full bg-slate-900/80 px-3 py-1 text-xs font-semibold text-white backdrop-blur border border-white/20">
+                  <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
+                  Live Satellite Signal
+                </div>
+                <div className="absolute bottom-3 inset-x-3 rounded-lg bg-white/95 p-3 text-xs text-navy-900 shadow-md backdrop-blur">
+                  <p className="font-bold text-navy-950">In-Car Satellite Audio Assistance</p>
+                  <p className="text-muted mt-0.5">Direct answers for activation, antenna signals & plan renewals.</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -179,29 +202,42 @@ export default function HomePage() {
       </section>
 
       {/* 8. Supported vehicles */}
-      <section aria-labelledby="vehicles-heading" className="on-navy bg-navy-900 py-16 sm:py-20">
-        <div className="container-page grid gap-10 lg:grid-cols-2 lg:gap-16">
+      <section aria-labelledby="vehicles-heading" className="border-y border-line bg-slate-50 py-16 sm:py-20">
+        <div className="container-page grid gap-10 lg:grid-cols-2 lg:gap-16 items-center">
           <div>
             <p className="eyebrow">Vehicles</p>
-            <h2 id="vehicles-heading" className="mt-2 text-3xl !text-white sm:text-4xl">
+            <h2 id="vehicles-heading" className="mt-2 text-3xl font-extrabold text-navy-950 sm:text-4xl">
               It depends on the receiver, not just the badge on the boot
             </h2>
-            <p className="mt-5 text-lg text-navy-100">{vehicleInfo.intro}</p>
-            <p className="mt-4 text-navy-200">{vehicleInfo.honest}</p>
+            <p className="mt-5 text-lg text-muted">{vehicleInfo.intro}</p>
+            <p className="mt-3 text-muted">{vehicleInfo.honest}</p>
+            <div className="relative mt-6 h-56 sm:h-64 w-full overflow-hidden rounded-2xl border border-line shadow-sm">
+              <Image
+                src="/images/vehicles-infotainment.jpg"
+                alt="Car infotainment touchscreen receiver"
+                fill
+                className="object-cover"
+                sizes="(min-width: 1024px) 50vw, 100vw"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/75 via-transparent to-transparent" />
+              <div className="absolute bottom-3 left-4 right-4 text-xs font-semibold text-white">
+                Compatible with factory-fitted, aftermarket & portable satellite receivers.
+              </div>
+            </div>
           </div>
-          <div className="rounded-2xl border border-white/15 bg-white/[0.06] p-6 sm:p-8">
-            <h3 className="text-xl !text-white">What helps us help you</h3>
+          <div className="card p-6 sm:p-8 bg-white shadow-card">
+            <h3 className="text-xl font-bold text-navy-900">What helps us help you</h3>
             <ul className="mt-5 space-y-4">
               {vehicleInfo.weNeed.map((n) => (
-                <li key={n} className="flex gap-3 text-navy-100">
-                  <span className="mt-0.5 flex h-6 w-6 flex-none items-center justify-center rounded-full bg-orange-500 text-navy-950">
+                <li key={n} className="flex gap-3 text-slate-700">
+                  <span className="mt-0.5 flex h-6 w-6 flex-none items-center justify-center rounded-full bg-emerald-100 text-emerald-700">
                     <Icon name="check" className="h-4 w-4" />
                   </span>
-                  {n}
+                  <span className="text-[0.9375rem]">{n}</span>
                 </li>
               ))}
             </ul>
-            <Link href="/contact" className="btn btn-primary mt-7">
+            <Link href="/contact" className="btn btn-primary mt-7 shadow-sm">
               Share your vehicle details
             </Link>
           </div>
